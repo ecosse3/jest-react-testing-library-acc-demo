@@ -8,14 +8,20 @@ const Counter = () => {
 
   return (
     <div>
-      <button className="btn" onClick={handleDecreaseCounter}>Minus</button>
-      <span className="count-span">
+      <h1>My Counter</h1>
+      <div className="count-text">
         Count:
-        <span data-testid="count" className={`count-number ${count > 0 && 'count-positive'} ${count < 0 && 'count-negative'}`}>
-          {' '}{count}
+      </div>
+      <div className="count-container">
+        <button className="btn" onClick={handleDecreaseCounter}>Minus</button>
+        <span
+          data-testid="count"
+          className={`count-number ${count > 0 && 'count-positive'} ${count < 0 && 'count-negative'}`}
+        >
+          {count}
         </span>
-      </span>
-      <button className="btn" onClick={handleIncreaseCounter}>Plus</button>
+        <button className="btn" onClick={handleIncreaseCounter}>Plus</button>
+      </div>
     </div>
   );
 }
