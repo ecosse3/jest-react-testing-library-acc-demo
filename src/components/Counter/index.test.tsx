@@ -38,3 +38,34 @@ test('press Minus button once', () => {
 
   expect(counter).toHaveTextContent('-1');
 })
+
+test('count number equal to 0 has black color', () => {
+  render(<Counter />)
+  const counter = screen.getByTestId('count');
+
+  expect(counter).toHaveClass('count-number');
+  expect(counter).not.toHaveClass('count-positive');
+  expect(counter).not.toHaveClass('count-negative');
+})
+
+test('positive count number has green color', () => {
+  render(<Counter />)
+  const counter = screen.getByTestId('count');
+  const plusButton = screen.getByRole('button', {
+    name: /Plus/i
+  })
+  fireEvent.click(plusButton);
+
+  expect(counter).toHaveClass('count-positive');
+})
+
+test('negative count number has red color', () => {
+  render(<Counter />)
+  const counter = screen.getByTestId('count');
+  const minusButton = screen.getByRole('button', {
+    name: /Minus/i
+  })
+  fireEvent.click(minusButton);
+
+  expect(counter).toHaveClass('count-negative');
+})
