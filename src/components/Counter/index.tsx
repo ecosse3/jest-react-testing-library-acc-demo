@@ -1,7 +1,11 @@
 import { useState } from "react";
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
+interface IProps {
+  initialValue?: number;
+}
+
+const Counter = ({ initialValue = 0 }: IProps) => {
+  const [count, setCount] = useState(initialValue);
 
   const handleIncreaseCounter = () => setCount(count => count + 1);
   const handleDecreaseCounter = () => setCount(count => count - 1);
