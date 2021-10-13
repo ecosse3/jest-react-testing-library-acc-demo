@@ -8,11 +8,25 @@ test('render counter', () => {
   expect(counter).toBeInTheDocument();
 })
 
+test('expect two buttons', () => {
+  render(<Counter />)
+  const buttons = screen.getAllByRole('button')
+
+  expect(buttons).toHaveLength(2);
+})
+
 test('render counter with 0 initial value', () => {
   render(<Counter />)
   const counter = screen.getByTestId('count');
 
   expect(counter).toHaveTextContent('0');
+})
+
+test('render counter with 5 initial value', () => {
+  render(<Counter initialValue={5} />)
+  const counter = screen.getByTestId('count');
+
+  expect(counter).toHaveTextContent('5');
 })
 
 test('press Plus button once', () => {
